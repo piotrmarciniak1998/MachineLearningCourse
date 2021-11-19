@@ -1,5 +1,8 @@
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -16,7 +19,7 @@ target = target.astype(int)
 # print(target)
 
 X, y = data, target
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # reg = linear_model.LinearRegression()
 # reg.fit(X_train, y_train)
@@ -37,13 +40,10 @@ X_test /= 100
 y_test /= 100
 y_test_out /= 100
 
-plt.plot(X_test, y_test, 'b+', X_test, y_test_out, 'r+')
+print("Mean absolute error: " + str(mean_absolute_error(y_test, y_test_out)))
+print("Mean squared error: " + str(mean_squared_error(y_test, y_test_out)))
+print("R2 score: " + str(r2_score(y_test, y_test_out)))
+
+plt.plot(X_test, y_test, 'bo', X_test, y_test_out, 'ro')
 plt.show()
 
-# clf = Pipeline([
-#     ('poly', PolynomialFeatures(degree=8)),
-#     ('line', LinearRegression())
-# ])
-# clf.fit(X_train, y_train)
-# plt.scatter(X_train, clf.predict(X_train)
-# plt.show()

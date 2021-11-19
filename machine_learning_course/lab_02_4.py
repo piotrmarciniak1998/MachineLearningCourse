@@ -1,7 +1,6 @@
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import plot_confusion_matrix
-from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.svm import SVC
 import matplotlib.pyplot as plt
 
